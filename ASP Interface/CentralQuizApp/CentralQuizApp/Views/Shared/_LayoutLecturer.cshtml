@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Central Institute of Technology</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="page">
+        <div id="sidebar">
+            <div class="boxed">
+                <h2 class="title">LecturerID</h2>
+                <div class="content">
+                    <p><a href="#">Sign Out</a> | <a href="#">Account</a></p>
+                </div>
+            </div>
+            <div class="boxed">
+                <h2 class="title">Clusters</h2>
+                <div class="content">
+                    <form id="searchform" method="get" action="">
+                        <fieldset>
+                            <input id="searchinput" type="text" name="clusterinput" value="" />
+                            <input id="searchsubmit" type="submit" value="Search" />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="boxed">
+                <h2 class="title">Users</h2>
+                <div class="content">
+                    <form id="searchform" method="get" action="">
+                        <fieldset>
+                            <input id="searchinput" type="text" name="userinput" value="" />
+                            <input id="searchsubmit" type="submit" value="Search" />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            @RenderSection("content", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+</body>
+</html>

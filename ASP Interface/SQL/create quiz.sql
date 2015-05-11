@@ -119,7 +119,7 @@ RESOLVING FOREIGN KEY CONNECTIONS
 -- Add FK from 'quizzes' too 'clusters' and 'lecturers'
 ALTER TABLE quizzes
 	ADD CONSTRAINT quizzes_cluster_fk FOREIGN KEY (quiz_cluster)
-		REFERENCES clusters(cluster_id);
+		REFERENcharacter_informationCES clusters(cluster_id);
 ALTER TABLE quizzes
 	ADD CONSTRAINT quizzes_lecturer_fk FOREIGN KEY (quiz_creator)
 		REFERENCES lecturers(lecturer_id);

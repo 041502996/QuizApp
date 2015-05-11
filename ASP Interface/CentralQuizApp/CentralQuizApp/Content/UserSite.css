@@ -1,0 +1,78 @@
+﻿#page {
+	width: 700px;
+	margin: 0;
+}
+
+#sidebar {
+	float: left;
+	width: 250px;
+	padding-top: 10px;
+}
+
+#content {
+	float: right;
+	width: 500px;
+	padding-top: 20px;
+	background: #C8C8C8;
+}
+
+.boxed {
+	margin-bottom: 10px;
+	background: #000000;
+}
+
+.boxed .title {
+	height: 20px;
+	margin: 0;
+	padding: 5px 0 0 5px;
+	background: #C8C8C8;
+	font-size: 16px;
+	font-weight: bold;
+	color: #000000;
+}
+
+.boxed .content {
+    color: #FFFFFF;
+	padding: 5x;
+    text-align: center;
+}
+
+
+
+#search {
+	border: none;
+}
+
+#search form {
+	margin: 0;
+	padding: 0;
+}
+
+#search fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#search p {
+	margin: 0;
+	font-size: 85%;
+}
+
+#searchinput {
+	float: right;
+	width: 175px;
+	padding: 2px 5px;
+	background: #EFEFEF;
+	border: 1px solid #FFFFFF;
+	font: bold "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#searchsubmit {
+	float: right;
+	margin-top: 5px;
+	background: #AD1112;
+	border: none;
+	font: bold"Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+}
