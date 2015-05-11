@@ -10,13 +10,13 @@
    */
 
 -- DROP DATABASE central_interface;
-CREATE DATABASE central_interface;
+--CREATE DATABASE central_interface;
 
-USE central_interface;
+--USE central_interface;
 
 -- 'students' table holds information about students, including login details
 CREATE TABLE students
-	(student_id 		INT			NOT NULL	PRIMARY KEY AUTO_INCREMENT,
+	(student_id 		INT			NOT NULL	PRIMARY KEY,
 	student_email 		VARCHAR(30)	NOT NULL,
 	student_password 	VARCHAR(32)	NOT NULL,
 	student_name_first 	VARCHAR(25)	NOT NULL,
@@ -26,19 +26,19 @@ CREATE TABLE students
 	
 -- 'lecturer' holds information about lecturers and superusers, including login details
 CREATE TABLE lecturers
-	(lecturer_id 		INT			NOT NULL	PRIMARY KEY AUTO_INCREMENT,
+	(lecturer_id 		INT			NOT NULL	PRIMARY KEY,
 	lecturer_email 		VARCHAR(30)	NOT NULL,
 	lecturer_password 	VARCHAR(32)	NOT NULL,
 	lecturer_name_first VARCHAR(25)	NOT NULL,
 	lecturer_name_last 	VARCHAR(25)	NOT NULL,
 	lecturer_verified 	VARCHAR(25)		NULL,
-	lecturer_superuser 	BIT(1)		NOT NULL
+	lecturer_superuser 	VARCHAR(1)		NOT NULL
 	);
 
 -- 'courses' table holds information about the courses
 -- Holds foreign key to 'lecturer' table
 CREATE TABLE courses
-	(course_id 			INT			NOT NULL	PRIMARY KEY AUTO_INCREMENT,
+	(course_id 			INT			NOT NULL	PRIMARY KEY,
 	course_coordinator 	INT			NOT NULL,
 	course_title 		VARCHAR(50)	NOT NULL,
 	course_abbreviation	VARCHAR(2)	NOT NULL
@@ -46,7 +46,7 @@ CREATE TABLE courses
 	
 -- 'clusters' table holds information about the clusters
 CREATE TABLE clusters
-	(cluster_id 		INT			NOT NULL	PRIMARY KEY AUTO_INCREMENT,
+	(cluster_id 		INT			NOT NULL	PRIMARY KEY,
 	cluster_title 		VARCHAR(50)	NOT NULL
 	);
 
@@ -83,7 +83,7 @@ CREATE TABLE course_clusters
 CREATE TABLE cluster_lecturers
 	(cluster_id 		INT		NOT NULL,
 	lecturer_id 		INT		NOT NULL,
-	CONSTRAINT courses_clusters_key PRIMARY KEY(cluster_id, lecturer_id)
+	CONSTRAINT clusters_lecturers_key PRIMARY KEY(cluster_id, lecturer_id)
 	);
 
 /*

@@ -6,9 +6,9 @@ using System.Web;
 
 namespace CentralQuizApp.Models
 {
-    public class QuizDBContext : DbContext
+    public class RepositoryDBContext : DbContext
     {
-        public DbSet<Clusters> Clusters { get; set; }
+        public DbSet<Clusters> ClustersList { get; set; }
     }
 
     public class Clusters

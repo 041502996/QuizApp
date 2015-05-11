@@ -1,5 +1,5 @@
 ﻿#page {
-	width: 700px;
+	width: 800px;
 	margin: 0;
 }
 
@@ -17,6 +17,7 @@
 }
 
 .boxed {
+    width: 200px;
 	margin-bottom: 10px;
 	background: #000000;
 }
@@ -33,13 +34,14 @@
 
 .boxed .content {
     color: #FFFFFF;
-	padding: 5x;
+	padding: 5px;
     text-align: center;
 }
 
 
 
 #search {
+    float: right;
 	border: none;
 }
 
@@ -61,7 +63,7 @@
 
 #searchinput {
 	float: right;
-	width: 175px;
+	width: 150px;
 	padding: 2px 5px;
 	background: #EFEFEF;
 	border: 1px solid #FFFFFF;

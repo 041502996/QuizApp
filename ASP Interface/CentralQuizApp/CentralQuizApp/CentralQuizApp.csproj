@@ -182,6 +182,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClustersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -189,10 +190,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\McvRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Repository.mdf" />
+    <Content Include="App_Data\Repository_log.ldf">
+      <DependentUpon>Repository.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\UserSite.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -311,9 +316,13 @@
     <Content Include="Views\Students\ListQuizzes.cshtml" />
     <Content Include="Views\Students\ReviewQuiz.cshtml" />
     <Content Include="Views\Students\ModifyAccount.cshtml" />
+    <Content Include="Views\Clusters\Index.cshtml" />
+    <Content Include="Views\Clusters\Details.cshtml" />
+    <Content Include="Views\Clusters\Create.cshtml" />
+    <Content Include="Views\Clusters\Edit.cshtml" />
+    <Content Include="Views\Clusters\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Lecturer\" />
     <Folder Include="Views\Superuser\" />
   </ItemGroup>

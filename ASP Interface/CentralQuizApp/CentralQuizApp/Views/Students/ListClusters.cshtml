@@ -1,9 +1,36 @@
-﻿@{
+﻿@model IEnumerable<CentralQuizApp.Models.Clusters>
+
+@{
     ViewBag.Title = "Clusters";
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 }
 
 @section content {
+    @foreach (var item in Model)
+    {
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.ActionLink("View", "View", new { id = item.ID })
+                </td>
+            </tr>
+        </table>
+        
+        <p></p>
+    }
+
     <p>List Clusters</p>
     @ViewBag.ClustersResult
 }
