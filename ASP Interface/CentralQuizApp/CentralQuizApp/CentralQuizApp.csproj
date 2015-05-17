@@ -182,7 +182,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ClustersController.cs" />
+    <Compile Include="Controllers\ClusterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -190,14 +190,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ClusterReturn.cs" />
+    <Compile Include="Models\CourseReturn.cs" />
     <Compile Include="Models\McvRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Repository.mdf" />
-    <Content Include="App_Data\Repository_log.ldf">
-      <DependentUpon>Repository.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\UserSite.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -316,15 +314,14 @@
     <Content Include="Views\Students\ListQuizzes.cshtml" />
     <Content Include="Views\Students\ReviewQuiz.cshtml" />
     <Content Include="Views\Students\ModifyAccount.cshtml" />
-    <Content Include="Views\Clusters\Index.cshtml" />
-    <Content Include="Views\Clusters\Details.cshtml" />
-    <Content Include="Views\Clusters\Create.cshtml" />
-    <Content Include="Views\Clusters\Edit.cshtml" />
-    <Content Include="Views\Clusters\Delete.cshtml" />
+    <Content Include="Views\Cluster\Index.cshtml" />
+    <Content Include="Views\Cluster\Details.cshtml" />
+    <Content Include="Views\Cluster\Create.cshtml" />
+    <Content Include="Views\Cluster\Edit.cshtml" />
+    <Content Include="Views\Cluster\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Lecturer\" />
-    <Folder Include="Views\Superuser\" />
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

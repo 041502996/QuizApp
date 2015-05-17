@@ -9,12 +9,12 @@ using CentralQuizApp.Models;
 
 namespace CentralQuizApp.Controllers
 {
-    public class ClustersController : Controller
+    public class ClusterController : Controller
     {
         private RepositoryDBContext db = new RepositoryDBContext();
 
         //
-        // GET: /Clusters/
+        // GET: /Cluster/
 
         public ActionResult Index()
         {
@@ -22,7 +22,7 @@ namespace CentralQuizApp.Controllers
         }
 
         //
-        // GET: /Clusters/Details/5
+        // GET: /Cluster/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -35,7 +35,7 @@ namespace CentralQuizApp.Controllers
         }
 
         //
-        // GET: /Clusters/Create
+        // GET: /Cluster/Create
 
         public ActionResult Create()
         {
@@ -43,7 +43,7 @@ namespace CentralQuizApp.Controllers
         }
 
         //
-        // POST: /Clusters/Create
+        // POST: /Cluster/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -60,7 +60,7 @@ namespace CentralQuizApp.Controllers
         }
 
         //
-        // GET: /Clusters/Edit/5
+        // GET: /Cluster/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
@@ -73,7 +73,7 @@ namespace CentralQuizApp.Controllers
         }
 
         //
-        // POST: /Clusters/Edit/5
+        // POST: /Cluster/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -89,7 +89,7 @@ namespace CentralQuizApp.Controllers
         }
 
         //
-        // GET: /Clusters/Delete/5
+        // GET: /Cluster/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
@@ -102,7 +102,7 @@ namespace CentralQuizApp.Controllers
         }
 
         //
-        // POST: /Clusters/Delete/5
+        // POST: /Cluster/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

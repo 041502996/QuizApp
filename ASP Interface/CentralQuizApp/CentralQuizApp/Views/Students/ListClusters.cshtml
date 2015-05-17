@@ -6,26 +6,29 @@
 }
 
 @section content {
-    @foreach (var item in Model)
+    @foreach (var clusterItem in @ViewBag.HTMLClusters)
     {
         <table>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.title)
+                    <a href="">@clusterItem.core.cluster_title</a>
                 </th>
                 <th>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                    <a href="">View</a>
                 </th>
             </tr>
 
+            @foreach (var quizItem in clusterItem.quizzesList)
+            {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.title)
+                    <a href="">@quizItem.quiz_title</a>
                 </td>
                 <td>
-                    @Html.ActionLink("View", "View", new { id = item.ID })
+                    <a href="">Take</a>
                 </td>
             </tr>
+            }
         </table>
         
         <p></p>
