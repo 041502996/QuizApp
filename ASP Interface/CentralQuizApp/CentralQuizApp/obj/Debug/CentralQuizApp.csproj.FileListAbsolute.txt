@@ -75,6 +75,6 @@ G:\TAFE\2015\Semester1\QuizApp\QuizApp\ASP Interface\CentralQuizApp\CentralQuizA
 G:\TAFE\2015\Semester1\QuizApp\QuizApp\ASP Interface\CentralQuizApp\CentralQuizApp\bin\ru\System.Spatial.resources.dll
 G:\TAFE\2015\Semester1\QuizApp\QuizApp\ASP Interface\CentralQuizApp\CentralQuizApp\bin\zh-Hans\System.Spatial.resources.dll
 G:\TAFE\2015\Semester1\QuizApp\QuizApp\ASP Interface\CentralQuizApp\CentralQuizApp\bin\zh-Hant\System.Spatial.resources.dll
-G:\TAFE\2015\Semester1\QuizApp\QuizApp\ASP Interface\CentralQuizApp\CentralQuizApp\obj\Debug\CentralQuizApp.csprojResolveAssemblyReference.cache
 G:\TAFE\2015\Semester1\QuizApp\QuizApp\ASP Interface\CentralQuizApp\CentralQuizApp\obj\Debug\CentralQuizApp.dll
 G:\TAFE\2015\Semester1\QuizApp\QuizApp\ASP Interface\CentralQuizApp\CentralQuizApp\obj\Debug\CentralQuizApp.pdb
+G:\TAFE\2015\Semester1\QuizApp\QuizApp\ASP Interface\CentralQuizApp\CentralQuizApp\obj\Debug\CentralQuizApp.csprojResolveAssemblyReference.cache

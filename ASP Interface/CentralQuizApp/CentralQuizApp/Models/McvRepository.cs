@@ -11,6 +11,7 @@ namespace CentralQuizApp.Models
 {
     public class RepositoryDBContext : DbContext
     {
+        //Core Objects DbSets
         public DbSet<Students> StudentsList { get; set; }
         public DbSet<Lecturers> LecturersList { get; set; }
         public DbSet<Clusters> ClustersList { get; set; }
@@ -19,11 +20,13 @@ namespace CentralQuizApp.Models
         public DbSet<Course_Clusters> CourseClustersList { get; set; }
         public DbSet<Cluster_Enrolments> ClusterEnrolList { get; set; }
         public DbSet<Cluster_Lecturers> ClusterLecturersList { get; set; }
+
+        // Quiz Object DbSets
         public DbSet<Quizzes> QuizzesList { get; set; }
         public DbSet<Questions> QuestionsList { get; set; }
         public DbSet<Formats> FormatsList { get; set; }
-
-        // Quiz Object Lists
+        public DbSet<Student_Quizzes> StudentQuizzesList { get; set; }
+        public DbSet<Student_Answers> StudentAnswersList { get; set; }
     }
 
     // Creating the table objects
@@ -148,18 +151,20 @@ namespace CentralQuizApp.Models
 
     public class Questions
     {
-        [Key]
+        [Key, Column(Order = 0)]
         public int question_id { get; set; }
 
+        [Key, Column(Order = 1)]
         public virtual int quiz_id { get; set; }
         [ForeignKey("quiz_id")]
         public virtual Quizzes quiz { get; set; }
-
+        
         public virtual int format_id { get; set; }
         [ForeignKey("format_id")]
         public virtual Formats format { get; set; }
 
-        public int question_position { get; set; }
+        public string question_question { get; set; }
+        public string question_answers { get; set; }
     }
 
     public class Formats
@@ -172,28 +177,37 @@ namespace CentralQuizApp.Models
         public string format_html_create { get; set; }
     }
 
-    public class True_False
+    public class Student_Quizzes
     {
-        [Key]
-        public int tf_id { get; set; }
+        [Key, Column(Order = 0)]
+        public virtual int quiz_id { get; set; }
+        [ForeignKey("quiz_id")]
+        public virtual Quizzes quiz { get; set; }
 
-        public virtual int question_id { get; set; }
-        [ForeignKey("question_id")]
-        public virtual Questions question { get; set; }
+        [Key, Column(Order = 1)]
+        public virtual string student_id { get; set; }
+        [ForeignKey("student_id")]
+        public virtual Students student { get; set; }
 
-        public string tf_question { get; set; }
-        public string tf_answer { get; set; }
+        public string student_answer_pass { get; set; }
     }
 
-    public class Multiple_Choice
+    public class Student_Answers
     {
-        public int mc_id { get; set; }
-
-        public virtual int question_id { get; set; }
-        [ForeignKey("question_id")]
+        [Key, Column(Order = 0)]
+        public virtual int sa_quiz_id { get; set; }
+        [Key, Column(Order = 1)]
+        public virtual string sa_student_id { get; set; }
+        [ForeignKey("sq_quiz_id, sa_student_id")]
+        public virtual Student_Quizzes student_quiz { get; set; }
+        
+//        [Key, Column(Order = 2)]
+        public virtual int q_question_id { get; set; }
+//        [Key, Column(Order = 3)]
+        public virtual int q_quiz_id { get; set; }
+        [ForeignKey("q_question_id, q_quiz_id")]
         public virtual Questions question { get; set; }
-
-        public string mc_question { get; set; }
-        public string mc_answer { get; set; }
+     
+//        public string student_answer_answer { get; set; }
     }
 }
