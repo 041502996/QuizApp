@@ -4,6 +4,26 @@
 }
 
 @section content {
-    <p>List Quizzes</p>
-    @ViewBag.QuizzesResult
+        <table>
+            <tr>
+                <th>
+                    <a href="">@ViewBag.HTMLClusters.core.cluster_title</a>
+                </th>
+                <th>
+                    <a href="">View</a>
+                </th>
+            </tr>
+
+            @foreach (var quizItem in @ViewBag.HTMLClusters.quizzesList)
+            {
+                <tr>
+                    <td>
+                        <a href="">@quizItem.quiz_title</a>
+                    </td>
+                    <td>
+                        <a href="">Take</a>
+                    </td>
+                </tr>
+            }
+        </table>
 }

@@ -16,6 +16,15 @@
 	background: #C8C8C8;
 }
 
+#content table {
+    border: 1px solid #FFFFFF;
+    width: 500px;
+}
+
+#content th {
+    text-align: left;
+}
+
 .boxed {
     width: 200px;
 	margin-bottom: 10px;

@@ -195,19 +195,17 @@ namespace CentralQuizApp.Models
     public class Student_Answers
     {
         [Key, Column(Order = 0)]
-        public virtual int sa_quiz_id { get; set; }
+        public virtual int question_id { get; set; }
         [Key, Column(Order = 1)]
-        public virtual string sa_student_id { get; set; }
-        [ForeignKey("sq_quiz_id, sa_student_id")]
-        public virtual Student_Quizzes student_quiz { get; set; }
-        
-//        [Key, Column(Order = 2)]
-        public virtual int q_question_id { get; set; }
-//        [Key, Column(Order = 3)]
-        public virtual int q_quiz_id { get; set; }
-        [ForeignKey("q_question_id, q_quiz_id")]
+        public virtual int quiz_id { get; set; }
+        [ForeignKey("question_id, quiz_id")]
         public virtual Questions question { get; set; }
+
+        [Key, Column(Order = 2)]
+        public virtual string student_id { get; set; }
+        [ForeignKey("student_id")]
+        public virtual Students student { get; set; }
      
-//        public string student_answer_answer { get; set; }
+        public string student_answer_answer { get; set; }
     }
 }

@@ -76,9 +76,6 @@ namespace CentralQuizApp.Controllers
 
         public ActionResult ListQuizzes(string clusterID)
         {
-            // Initiate list of ClusterReturn objects
-            List<ClusterReturn> returnList = new List<ClusterReturn>();
-
             // Find Cluster
             Clusters temp = db.ClustersList.Find(clusterID);
 
@@ -86,22 +83,23 @@ namespace CentralQuizApp.Controllers
             var clusterQuizzes = db.QuizzesList.Where(i => i.cluster_id.Contains(temp.cluster_id)).ToList<Quizzes>();
 
             // Add new ClusterReturn
-            returnList.Add(new ClusterReturn(temp, clusterQuizzes));
+            ClusterReturn returnList = new ClusterReturn(temp, clusterQuizzes);
 
             ViewBag.HTMLClusters = returnList;
-            ViewBag.QuizzesResult = "Returned Quizzes";
             return View();
         }
 
-        public ActionResult ReviewQuiz(string quizID)
+        public ActionResult ReviewQuiz(string quizID, string studentID)
         {
-            ViewBag.ReviewResult = "Review Returned";
+            Student_Quizzes temp = db.StudentQuizzesList.Find(quizID, studentID);
+            QuizReturn quizReturn = new QuizReturn(temp);
+
+            ViewBag.quizReturn = quizReturn;
             return View();
         }
 
-        public ActionResult ModifyAccount()
+        public ActionResult ModifyAccount(string studentID)
         {
-            ViewBag.ReviewResult = "Account Returned";
             return View();
         }
 

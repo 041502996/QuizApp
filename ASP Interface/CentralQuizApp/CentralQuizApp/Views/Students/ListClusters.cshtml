@@ -11,10 +11,10 @@
         <table>
             <tr>
                 <th>
-                    <a href="">@clusterItem.core.cluster_title</a>
+                    <a href="/students/listQuizzes?clusterID=@clusterItem.core.cluster_id">@clusterItem.core.cluster_title</a>
                 </th>
                 <th>
-                    <a href="">View</a>
+                    <a href="/students/listQuizzes?clusterID=@clusterItem.core.cluster_id">View</a>
                 </th>
             </tr>
 
@@ -33,7 +33,4 @@
         
         <p></p>
     }
-
-    <p>List Clusters</p>
-    @ViewBag.ClustersResult
 }

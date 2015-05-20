@@ -193,6 +193,7 @@
     <Compile Include="Models\ClusterReturn.cs" />
     <Compile Include="Models\CourseReturn.cs" />
     <Compile Include="Models\McvRepository.cs" />
+    <Compile Include="Models\QuizReturn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
