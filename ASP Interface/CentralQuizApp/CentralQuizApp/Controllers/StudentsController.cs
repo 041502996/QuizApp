@@ -18,16 +18,16 @@ namespace CentralQuizApp.Controllers
         // GET: /Students/
 
         // ListClusters is considered Student Homepage
-        public ActionResult ListClusters(string studentID)
+        public ActionResult ListClusters(string StudentID)
         {
             // Initiate list of ClusterReturn objects
             List<ClusterReturn> returnList = new List<ClusterReturn>();
 
             // Generate a list of enrolled clusters
-            var clusterEnrol = db.ClusterEnrolList.Where(i => i.student_id.Contains(studentID)).ToList<Cluster_Enrolments>();
+            var clusterEnrol = db.ClusterEnrolList.Where(i => i.student_id.Contains(StudentID)).ToList<Cluster_Enrolments>();
 
             // Generate a list of completed quizzes
-            var studentQuizzes = db.StudentQuizzesList.Where(j => j.student_id.Contains(studentID)).ToList<Student_Quizzes>();
+            var studentQuizzes = db.StudentQuizzesList.Where(j => j.student_id.Contains(StudentID)).ToList<Student_Quizzes>();
 
             // Loop enrolled clusters
             foreach(var clEn in clusterEnrol)
@@ -74,10 +74,10 @@ namespace CentralQuizApp.Controllers
             return View();
         }
 
-        public ActionResult ListQuizzes(string clusterID)
+        public ActionResult ListQuizzes(string ClusterID)
         {
             // Find Cluster
-            Clusters temp = db.ClustersList.Find(clusterID);
+            Clusters temp = db.ClustersList.Find(ClusterID);
 
             // Generate a list of clusters quizzes
             var clusterQuizzes = db.QuizzesList.Where(i => i.cluster_id.Contains(temp.cluster_id)).ToList<Quizzes>();
@@ -89,13 +89,47 @@ namespace CentralQuizApp.Controllers
             return View();
         }
 
-        public ActionResult ReviewQuiz(string quizID, string studentID)
+        public ActionResult ReviewQuiz(string QuizID, string StudentID)
         {
-            Student_Quizzes temp = db.StudentQuizzesList.Find(quizID, studentID);
+            Student_Quizzes temp = db.StudentQuizzesList.Find(QuizID, StudentID);
             QuizReturn quizReturn = new QuizReturn(temp);
 
             ViewBag.quizReturn = quizReturn;
             return View();
+        }
+
+        public string ReturnQuiz(string QuizID)
+        {
+            string returnXml;
+
+            int quiz_id = int.Parse(QuizID);
+            Quizzes quiz = db.QuizzesList.Find(quiz_id);
+            Clusters cluster = db.ClustersList.Find(quiz.cluster_id);
+            Lecturers lecturer = db.LecturersList.Find(quiz.lecturer_id);
+            List<Questions> quiz_questions = db.QuestionsList.Where(i => i.quiz_id == quiz_id).ToList<Questions>();
+            DbSet<Formats> formats = db.FormatsList;
+
+            returnXml = "<QUIZ>" + '\n' +
+                        "<CLUSTER>" + cluster.cluster_title + "</CLUSTER>" + '\n' +
+                        "<LECTURER>" + lecturer.lecturer_name_first + " " + lecturer.lecturer_name_last + "</LECTURER>" + '\n' +
+                        "<TITLE>" + quiz.quiz_title + "</TITLE>" + '\n' +
+                        "<TIMER>" + quiz.quiz_timer + "</TIMER>" + '\n' +
+                        "<DUEDATE>" + quiz.quiz_due_date + "</DUEDATE>" + '\n' +
+                        "<CREATEDATE>" + quiz.quiz_creation_date + "</CREATEDATE>" + '\n';
+
+            returnXml = returnXml + "<QUESTIONS>" + '\n';
+            foreach(Questions qu in quiz_questions)
+            {
+                Formats format = formats.Find(qu.format_id);
+                returnXml = returnXml +
+                            "<" + format.format_abbreviation + ">" + '\n' +
+                            "<TEXT>" + qu.question_question + "</TEXT>" + '\n' +
+                            qu.question_answers + '\n' +
+                            "</" + format.format_abbreviation + ">" + '\n';
+            }
+            returnXml = returnXml + "</QUESTIONS>" + '\n' + "</QUIZ>";
+
+            return returnXml;
         }
 
         public ActionResult ModifyAccount(string studentID)
