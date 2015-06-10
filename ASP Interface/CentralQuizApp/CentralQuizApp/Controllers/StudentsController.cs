@@ -100,7 +100,7 @@ namespace CentralQuizApp.Controllers
 
         public string ReturnQuiz(string QuizID)
         {
-            string returnXml;
+            string returnJson;
 
             int quiz_id = int.Parse(QuizID);
             Quizzes quiz = db.QuizzesList.Find(quiz_id);
@@ -109,27 +109,29 @@ namespace CentralQuizApp.Controllers
             List<Questions> quiz_questions = db.QuestionsList.Where(i => i.quiz_id == quiz_id).ToList<Questions>();
             DbSet<Formats> formats = db.FormatsList;
 
-            returnXml = "<QUIZ>" + '\n' +
-                        "<CLUSTER>" + cluster.cluster_title + "</CLUSTER>" + '\n' +
-                        "<LECTURER>" + lecturer.lecturer_name_first + " " + lecturer.lecturer_name_last + "</LECTURER>" + '\n' +
-                        "<TITLE>" + quiz.quiz_title + "</TITLE>" + '\n' +
-                        "<TIMER>" + quiz.quiz_timer + "</TIMER>" + '\n' +
-                        "<DUEDATE>" + quiz.quiz_due_date + "</DUEDATE>" + '\n' +
-                        "<CREATEDATE>" + quiz.quiz_creation_date + "</CREATEDATE>" + '\n';
+            returnJson = "\"quiz\": [{" +
+                        "\"clustertitle\": \"" + cluster.cluster_title + "\", " + '\n' +
+                        "\"lecturer\": \"" + lecturer.lecturer_name_first + " " + lecturer.lecturer_name_last + "\", " + '\n' +
+                        "\"quiztitle\": \"" + quiz.quiz_title + "\", " + '\n' +
+                        "\"timer\": \"" + quiz.quiz_timer + "\", " + '\n' +
+                        "\"duedate\": \"" + quiz.quiz_due_date + "\", " + '\n' +
+                        "\"createdate\": \"" + quiz.quiz_creation_date + "\", " + '\n';
 
-            returnXml = returnXml + "<QUESTIONS>" + '\n';
+            returnJson = returnJson + "\"questions\": [" + '\n';
             foreach(Questions qu in quiz_questions)
             {
-                Formats format = formats.Find(qu.format_id);
-                returnXml = returnXml +
-                            "<" + format.format_abbreviation + ">" + '\n' +
-                            "<TEXT>" + qu.question_question + "</TEXT>" + '\n' +
-                            qu.question_answers + '\n' +
-                            "</" + format.format_abbreviation + ">" + '\n';
-            }
-            returnXml = returnXml + "</QUESTIONS>" + '\n' + "</QUIZ>";
 
-            return returnXml;
+
+                Formats format = formats.Find(qu.format_id);
+                returnJson = returnJson + "{" +
+                            "\"type\": \"" + format.format_abbreviation + "\", " +
+                            "\"text\": \"" + qu.question_question + "\", " +
+                            "\"answers\": [" + qu.question_answers + "]" +
+                            "}," + '\n';
+            }
+            returnJson = returnJson + "]]";
+
+            return returnJson;
         }
 
         public ActionResult ModifyAccount(string studentID)
