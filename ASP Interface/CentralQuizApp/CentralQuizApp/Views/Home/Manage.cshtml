@@ -1,0 +1,27 @@
+﻿@model CentralQuizApp.Models.IndexModel
+@{
+    ViewBag.Title = "Manage1";
+}
+
+<h2>Manage1</h2>
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<p class="message-success">@ViewBag.StatusMessage</p>
+
+<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+
+@if (ViewBag.HasLocalPassword)
+{
+    @Html.Partial("_ChangePasswordPartial1")
+}
+else
+{
+    @Html.Partial("_SetPasswordPartial1")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
